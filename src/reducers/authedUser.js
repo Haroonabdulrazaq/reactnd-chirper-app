@@ -1,4 +1,4 @@
-import { SET_AUTHED_USER } from "../actions/setAuthedUser";
+import { SET_AUTHED_USER } from "../actions/authedUser";
 
 function authedUser(state=null, action){
   switch (action.type) {
