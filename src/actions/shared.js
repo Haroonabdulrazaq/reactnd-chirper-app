@@ -1,10 +1,10 @@
-import { getInitialData } from "../../utils/api";
+import { getInitialData } from "../utils/api";
 import { receiveUsers } from "./users";
 import { receiveTweets } from "./tweets";
-import { setAuthedUser } from "./authedUser";
+import { authedUser } from "./authedUser";
 
-const AUTHED_ID = 'tylermcginnis'
-
+const AUTHED_ID = 'tylermcginnis';
+// tylermcginnis
 export function handleInitialData(){
 
   return (dispatch) => {
@@ -12,7 +12,7 @@ export function handleInitialData(){
       .then(({users, tweets})=>{
         dispatch(receiveUsers(users))
         dispatch(receiveTweets(tweets))
-        dispatch(setAuthedUser(AUTHED_ID))
+        dispatch(authedUser(AUTHED_ID))
       })
   }
 }

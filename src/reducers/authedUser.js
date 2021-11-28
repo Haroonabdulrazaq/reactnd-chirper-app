@@ -1,6 +1,6 @@
 import { SET_AUTHED_USER } from "../actions/authedUser";
 
-function authedUser(state=null, action){
+function authedUser(state='tyler_mcginnis', action){
   switch (action.type) {
     case SET_AUTHED_USER:
       return {
