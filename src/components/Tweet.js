@@ -4,12 +4,22 @@ import { formatTweet, formatDate } from '../utils/helpers';
 import {BsReply} from 'react-icons/bs';
 import {FcLike} from 'react-icons/fc';
 import {AiOutlineHeart} from 'react-icons/ai';
+import {handleToggleTweet} from '../actions/tweets';
 
 class Tweet extends Component {
-  handleLkike =(e)=>{
+  handleLike =(e)=>{
     e.preventDefault();
     // todo: Handle Like tweet
+    const { dispatch, tweet, authedUser } = this.props
+
+    dispatch(
+      handleToggleTweet({
+        id: tweet.id,
+        hasLiked: tweet.hasLiked,
+        authedUser,
+      }))
   }
+
   toParent =(e, id)=> {
     e.preventDefault()
     // todo: Redirect to Parent Tweet
