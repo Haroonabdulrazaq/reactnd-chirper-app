@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from "../actions/shared";
-import Dashboard from './Dashboard';
+// import Dashboard from './Dashboard';
+import NewTweet from './NewTweet';
 import LoadingBar from 'react-redux-loading';
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
         {
           this.props.loading===true?
           null
-          : <Dashboard/>
+          : <NewTweet/>
         }
       </div>
     )
@@ -29,4 +30,4 @@ function mapStateToProps({authedUser}) {
     loading: authedUser === null,
   }
 }
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);
