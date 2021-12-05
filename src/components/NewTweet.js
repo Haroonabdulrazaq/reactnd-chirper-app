@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {handleAddTweet} from '../actions/tweets';
+//  import {Redirect} from 'react-router-dom';
 
 class NewTweet extends Component {
   state ={
     text: '',
+    toHome: false,
   }
 
   handleChange=(e)=>{
     const text = e.target.value
 
     this.setState(()=>({
-      text
+      text,
+
     }))
   }
 
@@ -27,6 +30,7 @@ class NewTweet extends Component {
 
     this.setState(()=>({
       text: '',
+      toHome: id? false : true,
     }))
     // Redirect to home view if form Submitted
   }
@@ -37,7 +41,7 @@ class NewTweet extends Component {
     const tweetLeft = 280 - text.length
     return (
       <div>
-       <h3 className="new-tweet">Compose New Tweet</h3>
+       <h3 className="new-tweet center">Compose New Tweet</h3>
        <form className='new-tweet' onSubmit={this.handleSubmit}>
         <textarea
           placeholder="Compose New Tweet"

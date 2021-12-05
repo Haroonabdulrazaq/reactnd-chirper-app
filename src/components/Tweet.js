@@ -5,6 +5,7 @@ import {BsReply} from 'react-icons/bs';
 import {FcLike} from 'react-icons/fc';
 import {AiOutlineHeart} from 'react-icons/ai';
 import {handleToggleTweet} from '../actions/tweets';
+import {Link, withRouter} from 'react-router-dom';
 
 class Tweet extends Component {
   handleLike =(e)=>{
@@ -22,7 +23,7 @@ class Tweet extends Component {
 
   toParent =(e, id)=> {
     e.preventDefault()
-    // todo: Redirect to Parent Tweet
+    this.props.history.push(`./tweet/${id}`)
   }
   render() {
     const {tweet} = this.props;
@@ -33,9 +34,9 @@ class Tweet extends Component {
       return <p>This tweet doesnt exist</p>
     }
 
-    const {name, avatar, timestamp, text, hasLiked, likes, replies, parent} = tweet;
+    const {name, avatar, timestamp, text, hasLiked, likes, replies, id, parent} = tweet;
     return (
-      <div className="tweet">
+      <Link to={`/tweet/${id}`} className="tweet">
         <img
           src={avatar}
           alt={`Avatar of ${name}`}
@@ -59,7 +60,7 @@ class Tweet extends Component {
             <span>{likes !== 0 && likes}</span>
           </div>
         </div>
-      </div>
+      </Link>
     )
   }
 }
